@@ -1,9 +1,7 @@
 # System imports
-import sys, tempfile, os
-from subprocess import call
+import sys, os
 
 # CLI imports
-from termcolor import cprint
 import inquirer as prompt
 
 # Notion imports
