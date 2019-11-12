@@ -10,6 +10,34 @@ The CLI simply allows you to interact with a page and syncs it with notion so an
 ### Demonstration
 ![](demonstration.gif)
 
+### Usage
+The notion-todo-cli has a few commands
+
+Listing todos
+```
+ntodo
+ntodo list
+```
+These command will list out all your current todos for you to view them. Here you can check or uncheck the todos using the left and right arrow keys. Navigate using the up and down arrow keys.
+
+Adding todos
+```
+ntodo add [Do something]
+```
+The `add` command allows you to add a todo to your notion page. You can quickly jot the todo down by simply following the command with the todo or simply write `ntodo add` (without anything following it) which will open your `$EDITOR` where you can write your todo. Once you save and exit the todo will be added.
+
+Editing todos
+```
+ntodo edit
+```
+Typing this command will show you all of you todos to easily select one of them. Once you select one, it will appear in your `$EDITOR` for editing. Once you save and exit the todo will be updated.
+
+Removing todos
+```
+ntodo remove
+```
+Typing this command will show you all of the todos where you can select one of them. After selecting one, it will confirm that you want to delete it. if you press `y` it will be deleted from your notion page.
+
 ### Setup
 To set notion-todo to work with your notion setup you'll need to do 2 things.
 
@@ -26,3 +54,5 @@ For this all you need to do is create a page (or use an existing one) as your to
 ```
 export NOTION_PAGE=https://www.notion.so/username/c1f350b7dfe0b7f8849e3f740e64520
 ```
+
+You can use this tool by running the python script or bundling it into an executable file.
