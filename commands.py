@@ -9,7 +9,6 @@ import inquirer as prompt
 # Notion imports
 from notion.client import NotionClient
 from notion.block import TodoBlock
-from notion.markdown import notion_to_markdown
 
 EDITOR = os.environ.get('EDITOR', 'vim')
 CLIENT = NotionClient(token_v2=os.environ.get('NOTION_TOKEN'))
@@ -18,14 +17,9 @@ page = CLIENT.get_block(os.environ.get('NOTION_PAGE'))
 def list():
     todos = [(todo.title, index) for index, todo in enumerate(page.children)]
     default = [index for index, todo in enumerate(page.children) if todo.checked]
-
-    checked = prompt.checkbox(
-        page.title,
-        choices=todos,
-        default=default
-    )
-
+    checked = prompt.checkbox(page.title, choices=todos, default=default)
     changed = set(checked).symmetric_difference(set(default))
+
     for index in changed:
         page.children[index].checked = index in checked
 
